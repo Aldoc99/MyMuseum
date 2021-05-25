@@ -1,0 +1,45 @@
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+.topnav a.active {
+  background-color: #DAA520;
+  color: white;
+}
+
+header {
+    background: no-repeat left/cover url(/images/Creazione.jpg);
+    display: flex;
+    height: 200px;
+    min-width: 120px;
+    align-items: center;
+    color: #fff;
+    text-shadow: #000 0 0 .2em;
+}
+
+header > h1 {
+    font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script', cursive,
+        fantasy;
+    margin: 2%;
+    color: #DAA520;
+}
+
+
+footer {
+  height: 100px;
+    border-top-style: outset;
+    margin-top: 2em;
+    background-color: #333;
+  }

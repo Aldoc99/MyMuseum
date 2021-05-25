@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head> -->
+    <head th:replace="fragments/base.html :: headerfiles"> </head> 
+    
+<body>
+    <div class="topnav">
+      <a href="/home">Home</a>
+      <a href="/collezioni">Collezioni</a>
+      <a href="/opere">Opere</a>
+      <a class="active" href="/artisti">Artisti</a>
+      <a href="#about">Area admin</a>
+    </div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+    
+    <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
