@@ -1,0 +1,72 @@
+//ARTISTI
+    	String b1="Alessandro di Mariano di Vanni Filipepi, conosciuto col nome d'arte di Sandro Botticelli, è "
+    			+ "stato un pittore italiano inquadrabile nella corrente artistica del Rinascimento.";
+    	Artista artista1= new Artista("Sandro", "Botticelli", LocalDate.of(1445, 1, 1), "Firenze", "Italia", b1);
+    	artista1.setDataMorte(LocalDate.of(1510, 5, 17));
+    	artista1.setLuogoMorte("Firenze");
+    	artistaService.inserisci(artista1);
+    	
+    	String b2="Michelangelo Buonarroti è stato uno scultore, pittore, architetto e poeta italiano";
+    	Artista artista2= new Artista("Michelangelo", "Buonarroti", LocalDate.of(1476, 3, 6), "Caprese", "Italia", b2);
+    	artista2.setDataMorte(LocalDate.of(1564, 2, 18));
+    	artista2.setLuogoMorte("Roma");
+    	artistaService.inserisci(artista2);
+    	
+    	String b3="Raffaello Sanzio è stato un pittore e architetto italiano, fra i più celebri del Rinascimento.";
+    	Artista artista3= new Artista("Raffaello", "Sanzio", LocalDate.of(1483, 3, 28), "Urbino", "Italia", b3);
+    	artista2.setDataMorte(LocalDate.of(1520, 4, 6));
+    	artista2.setLuogoMorte("Roma");
+    	artistaService.inserisci(artista3);
+    	
+    	//COLLEZIONI
+    	//!
+    	Collezione collezione1=new Collezione("Stanza di Raffaello", 
+    			"Le Stanze di Raffaello sono quattro sale in sequenza che fanno parte dei Musei Vaticani e sono "
+    			+ "così chiamate perché affrescate dal grande pittore urbinate e dagli allievi della sua bottega.");
+    	
+    	Opera opera1= new Opera("Scuola di Atene", 1511, 
+    			"La Scuola di Atene è un affresco (770×500 cm circa) di Raffaello Sanzio, databile al 1509-1511. "
+    			+ "rappresenta una delle opere pittoriche più rilevanti dello Stato della Città del Vaticano.");
+    	opera1.setArtista(artista3);
+    	opera1.setCollezione(collezione1);
+    	List<Opera> opere1=new ArrayList<>();
+    	opere1.add(opera1);
+    	collezione1.setOpere(opere1);
+    	
+    	Curatore curatore1= new Curatore(12345, "Mario", "Rossi", LocalDate.of(1982, 3, 28), "Roma", "mariorossi@gmail.com", 333111666);
+    	curatoreService.inserisci(curatore1);
+    	collezione1.setCuratore(curatore1);
+    	
+    	
+    	collezioneService.inserisci(collezione1);
+    	
+    	//2
+    	Collezione collezione2=new Collezione("Cappella Sistina", 
+    			"La Cappella Sistina è la principale cappella del palazzo apostolico, nonché uno dei più famosi "
+    			+ "tesori culturali e artistici della Città del Vaticano."
+    			+ " Fu costruita tra il 1475 e il 1481 circa, all'epoca di papa Sisto IV della Rovere, da cui prese il nome.");
+    	
+    	Opera opera21= new Opera("Giudizio Universale", 1511, 
+    			"Il Giudizio universale (1536-1541) è un affresco di Michelangelo Buonarroti, realizzato tra il 1536 e il 1541 "
+    			+ "su commissione di Papa Clemente VII per decorare la parete dietro l'altare della Cappella Sistina");
+    	opera21.setArtista(artista2);
+    	opera21.setCollezione(collezione2);
+    	Opera opera22= new Opera("La punizione dei ribelli", 1482, 
+    			"La Punizione dei ribelli è un affresco (348,5x570 cm) di Sandro Botticelli e aiuti, realizzato tra il "
+    			+ "1480 e il 1482 e facente parte della decorazione del registro mediano della Cappella Sistina in Vaticano.");
+    	opera22.setArtista(artista1);
+    	opera22.setCollezione(collezione2);
+
+    	
+    	
+    	List<Opera> opere2=new ArrayList<>();
+    	opere2.add(opera21);
+    	opere2.add(opera22);
+    	
+    	collezione2.setOpere(opere2);  	
+
+    	Curatore curatore2= new Curatore(12346, "Antonia", "Benedetti", LocalDate.of(1988, 1, 28), "Roma", "antoniabenedetti@gmail.com", 333211666);
+    	curatoreService.inserisci(curatore2);
+    	collezione2.setCuratore(curatore2);
+    	
+    	collezioneService.inserisci(collezione2);

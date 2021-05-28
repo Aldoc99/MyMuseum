@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head> -->
+    <head th:replace="fragments/base.html :: headerfiles"> </head> 
+    
+<body>
+  <div class="topnav">
+    <a href="/home">Home</a>
+    <a href="/collezioni">Collezioni</a>
+    <a href="/opere">Opere</a>
+    <a class="active" href="/artisti">Artisti</a>
+    <a href="#about">Area admin</a>
+  </div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+  
+  <section>    
+    
+    <div th:if="${artista}" th:object="${artista}">
+      <h4>Artista:</h4>
+      <span th:text="|*{nome} *{cognome}|">nome</span>
+      <h4>Data nascita: </h4>
+      <p th:utext="*{dataNascita}">descrizione</p>
+      <h4>Luogo nascita: </h4>
+      <p th:utext="*{luogoNascita}">descrizione</p>
+      <h4>Data morte: </h4>
+      <p th:utext="*{dataMorte}">descrizione</p>
+      <h4>Luogo morte: </h4>
+      <p th:utext="*{luogoMorte}">descrizione</p>
+      <h4>Nazione: </h4>
+      <p th:utext="*{nazione}">descrizione</p>
+      <h4>Biografia:</h4>
+      <p th:utext="*{biografia}">descrizione</p>
+
+      <h4>Lista opere</h4>
+      <ul>
+        <li th:each="opera : ${opere}">
+          <a href="opera.html" 
+             th:href="@{'/opere' + '/' + ${opera.id}}" 
+             th:text="|${opera.titolo}, ${opera.anno}|">Giudizio universale</a>
+        </li>
+      </ul>
+    </div>
+    <div th:unless="${artista}">Non esiste</div>
+
+
+  </section>
+
+
+
+
+  <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

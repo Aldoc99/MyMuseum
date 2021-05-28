@@ -11,8 +11,23 @@
       <a class="active" href="/artisti">Artisti</a>
       <a href="#about">Area admin</a>
     </div>
-	<header th:replace="fragments/base.html :: intestazione"></header>
+	  <header th:replace="fragments/base.html :: intestazione"></header>
     
+    <section>
+    <div>
+      <h4>Lista artisti</h4>
+      <ul>
+        <li th:each="artista : ${artisti}">
+          <a href="artista.html" 
+             th:href="@{'/artisti' + '/' + ${artista.id}}" 
+             th:text="|${artista.nome} ${artista.cognome}|">Michelangelo Buonarroti</a>
+        </li>
+      </ul>
+    </div>   
+
+    </section>
+
+
     <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

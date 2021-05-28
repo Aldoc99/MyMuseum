@@ -27,6 +27,7 @@ public class Artista{
 	private LocalDate dataMorte;
 	private String luogoMorte;
 	private String nazione;
+	private String biografia;
 	
 	@OneToMany(mappedBy= "artista")
 	private List<Opera> opere;
@@ -35,12 +36,13 @@ public class Artista{
 		opere=new ArrayList<>();
 	}
 
-	public Artista(String nome, String cognome, LocalDate dataNascita, String luogoNascita, String nazione) {
+	public Artista(String nome, String cognome, LocalDate dataNascita, String luogoNascita, String nazione, String biografia) {
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = dataNascita;
 		this.luogoNascita = luogoNascita;
 		this.nazione = nazione;
+		this.biografia=biografia;
 		
 		opere=new ArrayList<>();
 	}

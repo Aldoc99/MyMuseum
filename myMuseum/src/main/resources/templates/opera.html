@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head> -->
+    <head th:replace="fragments/base.html :: headerfiles"> </head> 
+    
+<body>
+  <div class="topnav">
+    <a href="/home">Home</a>
+    <a href="/collezioni">Collezioni</a>
+    <a class="active" href="/opere">Opere</a>
+    <a href="/artisti">Artisti</a>
+    <a href="#about">Area admin</a>
+  </div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+  
+  <section>    
+    
+    <div th:if="${opera}" th:object="${opera}">
+      <h4>Titolo:</h4>
+      <span th:text="*{titolo}">nome</span>
+      <h4>Anno: </h4>
+      <p th:utext="*{anno}">descrizione</p>
+      <h4>Descrizione: </h4>
+      <p th:utext="*{descrizione}">descrizione</p>
+      
+      <div th:object="${artista}">
+        <h4>Artista:</h4>
+        <a href="opera.html" 
+             th:href="@{'/artisti' + '/' + ${artista.id}}" 
+             th:text="|${artista.nome}, ${artista.cognome}|">Giudizio universale</a>
+      </div>
+      
+      <div th:object="${collezione}">
+        <h4>Collezione:</h4>
+        <a href="opera.html" 
+             th:href="@{'/collezioni' + '/' + ${collezione.id}}" 
+             th:text="${collezione.nome}">Giudizio universale</a>
+      </div>
+
+
+      
+    </div>
+    <div th:unless="${opera}">Non esiste</div>
+
+
+  </section>
+
+
+
+
+  <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>

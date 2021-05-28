@@ -4,15 +4,32 @@
     <head th:replace="fragments/base.html :: headerfiles"> </head> 
     
 <body>
-    <div class="topnav">
-      <a href="/home">Home</a>
-      <a class="active" href="/collezioni">Collezioni</a>
-      <a href="/opere">Opere</a>
-      <a href="/artisti">Artisti</a>
-      <a href="#about">Area admin</a>
-    </div>
+  <div class="topnav">
+    <a href="/home">Home</a>
+    <a class="active" href="/collezioni">Collezioni</a>
+    <a href="/opere">Opere</a>
+    <a href="/artisti">Artisti</a>
+    <a href="#about">Area admin</a>
+  </div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-    
-    <footer th:replace="fragments/base.html :: fondo"></footer>
+  
+  <section>
+    <div>
+      <h4>Lista collezioni</h4>
+      <ul>
+        <li th:each="collezione : ${collezioni}">
+          <a href="collezione.html" 
+             th:href="@{'/collezioni' + '/' + ${collezione.id}}" 
+             th:text="|${collezione.nome}|">Cappella sistina</a>
+        </li>
+      </ul>
+    </div>   
+
+  </section>
+
+
+
+
+  <footer th:replace="fragments/base.html :: fondo"></footer>
 </body>
 </html>

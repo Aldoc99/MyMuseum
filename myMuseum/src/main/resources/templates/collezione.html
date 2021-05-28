@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--<head th:replace="fragments/base.html :: headerfiles(title=#{pageTitle.persona})"> </head> -->
+    <head th:replace="fragments/base.html :: headerfiles"> </head> 
+    
+<body>
+  <div class="topnav">
+    <a href="/home">Home</a>
+    <a class="active" href="/collezioni">Collezioni</a>
+    <a href="/opere">Opere</a>
+    <a href="/artisti">Artisti</a>
+    <a href="#about">Area admin</a>
+  </div>
+	<header th:replace="fragments/base.html :: intestazione"></header>
+  
+  <section>    
+    
+    <div th:if="${collezione}" th:object="${collezione}">
+      <h4>Collezione:</h4>
+      <span th:text="*{nome}">nome</span>
+      <h4>Descrizione:</h4>
+      <p th:utext="*{descrizione}">descrizione</p>
+
+      <h4>Lista opere</h4>
+      <ul>
+        <li th:each="opera : ${opere}">
+          <a href="opera.html" 
+             th:href="@{'/opere' + '/' + ${opera.id}}" 
+             th:text="|${opera.titolo}, ${opera.anno}|">Giudizio universale</a>
+        </li>
+      </ul>
+
+      <div th:object="${curatore}">
+        <h4>Curatore:</h4>
+        <span th:text="|*{nome} *{cognome}, *{matricola}|">nome</span>
+        <p th:utext="|Email: *{email}|">dati</p> 
+        <p th:utext="|Telefono: *{numeroTelefono}|">dati</p>      
+      </div>
+
+
+    </div>
+    <div th:unless="${collezione}">Non esiste</div>
+
+
+  </section>
+
+
+
+
+  <footer th:replace="fragments/base.html :: fondo"></footer>
+</body>
+</html>
