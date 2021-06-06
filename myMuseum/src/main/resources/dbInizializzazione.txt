@@ -1,3 +1,4 @@
+// ****DATE E LUOGHI MORTE
 //ARTISTI
     	String b1="Alessandro di Mariano di Vanni Filipepi, conosciuto col nome d'arte di Sandro Botticelli, è "
     			+ "stato un pittore italiano inquadrabile nella corrente artistica del Rinascimento.";

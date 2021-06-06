@@ -38,6 +38,7 @@ public class UtenteController {
 	OperaService operaService;
 	
 	
+	
     @RequestMapping(value= {"/","/home"}, method = RequestMethod.GET)
     public String getHome(Model model) {
     	

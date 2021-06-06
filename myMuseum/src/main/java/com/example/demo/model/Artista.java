@@ -4,11 +4,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -22,14 +26,22 @@ public class Artista{
 	
 	private String nome;
 	private String cognome;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataNascita;
+	
 	private String luogoNascita;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate dataMorte;
+	
 	private String luogoMorte;
 	private String nazione;
+	
+	@Column(length=1000)
 	private String biografia;
 	
-	@OneToMany(mappedBy= "artista")
+	@OneToMany(mappedBy= "artista", cascade=CascadeType.ALL)
 	private List<Opera> opere;
 	
 	public Artista() {

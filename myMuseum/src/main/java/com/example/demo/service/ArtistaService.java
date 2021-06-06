@@ -31,4 +31,6 @@ public class ArtistaService {
 	public List<Artista> tutti(){
 		return (List<Artista>) artistaRepository.findAll();
 	}
+
+	
 }

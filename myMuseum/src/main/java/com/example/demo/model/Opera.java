@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class Opera {
 	
 	private String titolo;
 	private int anno;
+	
+	@Column(length=1000)
 	private String descrizione;
 
 	@ManyToOne
