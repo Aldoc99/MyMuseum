@@ -18,7 +18,7 @@ import lombok.Data;
 public class Curatore {
 
 	@Id
-	private int matricola;
+	private Long matricola;
 	
 	private String nome;
 	private String cognome;
@@ -38,7 +38,7 @@ public class Curatore {
 		this.collezioni= new ArrayList<>();
 	}
 	
-	public Curatore(int matricola, String nome, String cognome, LocalDate dataNascita, String luogoNascita,
+	public Curatore(Long matricola, String nome, String cognome, LocalDate dataNascita, String luogoNascita,
 			String email, int numeroTelefono) {
 		this.matricola = matricola;
 		this.nome = nome;

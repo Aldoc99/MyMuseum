@@ -19,6 +19,11 @@
   color: white;
 }
 
+#admin a:hover {
+  background-color: #DAA520;
+  color: white;
+} 
+
 header {
     background: no-repeat left/cover url(/images/Creazione.jpg);
     display: flex;

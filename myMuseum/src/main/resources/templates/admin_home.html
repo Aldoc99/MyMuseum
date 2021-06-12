@@ -14,23 +14,28 @@
     <a class="active" href="/admin/home" th:text="#{header.areaAdmin}">Area admin</a>
   </div>
 	<header th:replace="fragments/base.html :: intestazione"></header>
-  
+  <div class="topnav" id="admin">
+    <a href="/logout" >Logout</a>
+    <a href="/admin/register" >New admin</a>
+    
+  </div>
+
   <section>    
     <div>
       <h4 th:text="#{header.benvenuto}">Benvenuto!</h4>
       <p th:text="#{msgAdmin.home}"></p>
       <div>
-        <div  class="adminMenu">
+        <div class="adminMenu">
           <ul>
-            <li><a href="#home" th:text="#{msgAdmin.NewCollezione}"></a></li>
-            <li><a href="#news" th:text="#{msgAdmin.EliminaCollezione}"></a></li>
+            <li><a href="/admin/newCollezione" th:text="#{msgAdmin.NewCollezione}"></a></li>
+            <li><a href="/admin/deleteCollezione" th:text="#{msgAdmin.EliminaCollezione}"></a></li>
             <li><a href="/admin/newArtista" th:text="#{msgAdmin.NewArtista}"></a></li>
-            <li><a href="#about" th:text="#{msgAdmin.EliminaArtista}"></a></li>
+            <li><a href="/admin/deleteArtista" th:text="#{msgAdmin.EliminaArtista}"></a></li>
             <li><a href="#home" th:text="#{msgAdmin.NewOpera}"></a></li>
             <li><a href="#news" th:text="#{msgAdmin.EliminaOpera}"></a></li>
-            <li><a href="#contact" th:text="#{msgAdmin.NewCuratore}"></a></li>
-            <li><a href="#about" th:text="#{msgAdmin.EliminaCuratore}"></a></li>
-            <li><a href="#home" th:text="#{msgAdmin.VisualizzaCuratori}"></a></li>
+            <li><a href="/admin/newCuratore" th:text="#{msgAdmin.NewCuratore}"></a></li>
+            <li><a href="/admin/deleteCuratore" th:text="#{msgAdmin.EliminaCuratore}"></a></li>
+            <li><a href="/admin/curatori" th:text="#{msgAdmin.VisualizzaCuratori}"></a></li>
           </ul>
 
         </div>

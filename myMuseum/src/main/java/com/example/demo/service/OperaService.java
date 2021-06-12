@@ -30,4 +30,9 @@ public class OperaService {
 	public List<Opera> tutti(){
 		return (List<Opera>) operaRepository.findAll();
 	}
+	
+	@Transactional
+	public void elimina(Long id){
+		this.operaRepository.deleteById(id);
+	}
 }

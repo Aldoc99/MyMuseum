@@ -22,12 +22,17 @@ public class CuratoreService {
 	}
 	
 	@Transactional
-	public Curatore getById(Long id) {
-		return curatoreRepository.findById(id).orElse(null);
+	public Curatore getById(Long matricola) {
+		return curatoreRepository.findById(matricola).orElse(null);
 	}
 	
 	@Transactional
 	public List<Curatore> tutti(){
 		return (List<Curatore>) curatoreRepository.findAll();
+	}
+	
+	@Transactional
+	public void elimina(Long id){
+		this.curatoreRepository.deleteById(id);
 	}
 }

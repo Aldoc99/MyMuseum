@@ -32,5 +32,11 @@ public class ArtistaService {
 		return (List<Artista>) artistaRepository.findAll();
 	}
 
+	@Transactional
+	public void elimina(Long id){
+		this.artistaRepository.deleteById(id);
+	}
+
+		
 	
 }

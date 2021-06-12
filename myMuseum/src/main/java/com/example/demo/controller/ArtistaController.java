@@ -5,17 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Artista;
 import com.example.demo.service.ArtistaService;
 import com.example.demo.validator.ArtistaValidator;
 
-
-
 @Controller
-public class AmministratoreController {
+public class ArtistaController {
 
 	@Autowired
 	ArtistaService artistaService;
@@ -23,9 +23,17 @@ public class AmministratoreController {
 	@Autowired
 	ArtistaValidator artistaValidator;
 	
-	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public String getHomeIndex(Model model) {
-		return "admin_home";
+	@RequestMapping(value= "/artisti", method = RequestMethod.GET)
+    public String getArtisti(Model model) {
+    	model.addAttribute("artisti", artistaService.tutti());
+        return "artistiAll.html";
+    }
+    
+    @RequestMapping(value= "/artisti/{id}", method = RequestMethod.GET)
+    public String getArtista(@PathVariable("id") Long id, Model model) {
+    	model.addAttribute("artista", artistaService.getById(id));
+    	model.addAttribute("opere", artistaService.getById(id).getOpere());
+        return "artista.html";
     }
 	
 	@RequestMapping(value="/admin/newArtista", method = RequestMethod.GET)
@@ -45,21 +53,21 @@ public class AmministratoreController {
 		return "formArtista";
 	}
 	
-	
+	@RequestMapping(value="/admin/deleteArtista", method = RequestMethod.GET)
+    public String deleteArtista(Model model) {
 
-	
-	
-//	@RequestMapping(value="/admin/newCollezione", method = RequestMethod.GET)
-//    public String newCollezioneChooseCuratore(Model model) {
-//
-//		return "formCollezionaCuratore";
-//    }
-//	
-//	@RequestMapping(value="/admin/newCollezione/{idC}", method = RequestMethod.GET)
-//    public String newCollezioneChooseCuratore(Model model) {
-//
-//		return "formCollezionaCuratore";
-//    }
-			
+    	model.addAttribute("artisti", artistaService.tutti());
+		return "artistiCancella";
+    }
+	@RequestMapping(value="/admin/deleteArtista", method = RequestMethod.POST)
+	public String deleteDoneArtista(Model model, @RequestParam(required=false,name="artistaDaCancellare")Long id) {
+		if (id==null) {
+			model.addAttribute("artisti", artistaService.tutti());
+			return "artistiCancella";
+		}
+		artistaService.elimina(id);
+    	model.addAttribute("artisti", artistaService.tutti());
+		return "artistiAll";
+	}
 	
 }

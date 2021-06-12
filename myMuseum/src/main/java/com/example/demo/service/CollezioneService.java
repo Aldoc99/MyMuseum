@@ -30,4 +30,9 @@ public class CollezioneService {
 	public List<Collezione> tutti(){
 		return (List<Collezione>) collezioneRepository.findAll();
 	}
+	
+	@Transactional
+	public void elimina(Long id){
+		this.collezioneRepository.deleteById(id);
+	}
 }
