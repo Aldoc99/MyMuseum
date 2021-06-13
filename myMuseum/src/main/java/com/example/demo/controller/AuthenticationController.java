@@ -60,12 +60,7 @@ public class AuthenticationController {
 		return "registerUser";
 	}
 	
-//	@RequestMapping(value = "register", method = RequestMethod.GET) 
-//	public String showRegisterFormProva (Model model) {
-//		model.addAttribute("user", new User());
-//		model.addAttribute("credentials", new Credentials());
-//		return "registerUser";
-//	}
+
     
     @RequestMapping(value = { "/admin/register" }, method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("user") User user,
@@ -89,6 +84,12 @@ public class AuthenticationController {
         return "registerUser";
     }
     
+//    @RequestMapping(value = "/register", method = RequestMethod.GET) 
+//	public String showRegisterFormProva (Model model) {
+//		model.addAttribute("user", new User());
+//		model.addAttribute("credentials", new Credentials());
+//		return "registerUser";
+//	}
 //    @RequestMapping(value = { "/register" }, method = RequestMethod.POST)
 //    public String registerUserProva(@ModelAttribute("user") User user,
 //                 BindingResult userBindingResult,
@@ -96,14 +97,16 @@ public class AuthenticationController {
 //                 BindingResult credentialsBindingResult,
 //                 Model model) {
 //
-//
+//    	 // validate user and credentials fields
+//        this.userValidator.validate(user, userBindingResult);
+//        this.credentialsValidator.validate(credentials, credentialsBindingResult);
 //        // if neither of them had invalid contents, store the User and the Credentials into the DB
 //        if(!userBindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
 //            // set the user and store the credentials;
 //            // this also stores the User, thanks to Cascade.ALL policy
 //            credentials.setUser(user);
 //            credentialsService.saveCredentials(credentials);
-//            return "admin_home";
+//            return "home";
 //        }
 //        return "registerUser";
 //    }

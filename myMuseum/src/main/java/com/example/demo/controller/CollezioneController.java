@@ -41,35 +41,32 @@ public class CollezioneController {
     	model.addAttribute("curatore", collezioneService.getById(id).getCuratore());	
         return "collezione.html";
     }
-    
+	
     @RequestMapping(value= "/admin/newCollezione", method = RequestMethod.GET)
     public String getFormCuratoreCollezione(Model model) {
+		model.addAttribute("collezione", new Collezione());
     	model.addAttribute("curatori", curatoreService.tutti());	
-        return "formCollezioneCuratore";
+        return "formCollezione";
     }
       
-    @RequestMapping(value="/admin/newCollezione/{idC}", method = RequestMethod.GET)
-    public String newCollezione(@PathVariable("idC")Long id, Model model) {
-    	model.addAttribute("curatore", this.curatoreService.getById(id));	
-		model.addAttribute("collezione", new Collezione());
-		return "formCollezione";
-    }
-	@RequestMapping(value="/admin/newCollezione/{idC}", method = RequestMethod.POST)
-	public String getCollezione(@ModelAttribute("collezione")Collezione collezione, 
-							@PathVariable("idC")Long id,
+    
+	@RequestMapping(value="/admin/newCollezione", method = RequestMethod.POST)
+	public String getCollezione(@ModelAttribute("collezione")Collezione collezione,
+							@RequestParam(required=false,name="curatore")Long idC,
 							Model model, BindingResult bindingResult) {
 		this.collezioneValidator.validate(collezione, bindingResult);
-		if (!bindingResult.hasErrors()) {
-			Curatore curatore=this.curatoreService.getById(id);
+		if (!bindingResult.hasErrors() && idC!=null) {
+			Curatore curatore=this.curatoreService.getById(idC);
 			collezione.setCuratore(curatore);
 			this.collezioneService.inserisci(collezione);
 			model.addAttribute("curatore", curatore);
 			model.addAttribute("collezione", collezione);
 			return "collezione";
 		}
+		model.addAttribute("curatori", curatoreService.tutti());
 		return "formCollezione";
 	}
-	
+    
 	@RequestMapping(value="/admin/deleteCollezione", method = RequestMethod.GET)
     public String deleteArtista(Model model) {
     	model.addAttribute("collezioni", collezioneService.tutti());

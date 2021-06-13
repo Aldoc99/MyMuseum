@@ -19,7 +19,7 @@
     <div>
       <h4 th:text="#{msgAdmin.NewCollezione}">Benvenuto!</h4>
       <div>
-        <form th:action="@{'/admin/newCollezione' + '/' + ${curatore.matricola}}" method="POST" th:object="${collezione}">
+        <form th:action="@{'/admin/newCollezione'}" method="POST" th:object="${collezione}">
           <div th:if="${#fields.hasGlobalErrors()}">
               <p th:each="err : ${#fields.globalErrors()}" th:text="${err}">...</p>
           </div>    
@@ -34,7 +34,17 @@
               <span><textarea type="text" th:field="*{descrizione}" rows="10" cols="80"></textarea></span>
               <span id="errore" th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
             </div>    
-            
+            <div>
+              <p th:text="#{msgAdmin.NewCollezioneCuratore}">Scegli curatore</p>
+              <ul>
+                <li th:each="curatore : ${curatori}">
+                  <div>
+                    <input type="radio" name="curatore" th:value="${curatore.matricola}"/>
+                    <label th:text="|${curatore.nome} ${curatore.cognome}, ${curatore.matricola}|"></label>
+                  </div>
+                </li>
+              </ul>  
+            </div>   
             <div>
               <span><button type="submit">Create!</button></span>
             </div>

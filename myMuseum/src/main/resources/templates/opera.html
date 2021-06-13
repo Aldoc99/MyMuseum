@@ -23,6 +23,9 @@
       <h4 th:text="#{msgOpera.descrizione}">Descrizione: </h4>
       <p th:utext="*{descrizione}">descrizione</p>
       
+      <h4 th:text="#{msgOpera.immagine}">Immagine: </h4>
+      <img th:src="@{'data:image/jpeg;base64,' +${image}}"> 
+
       <div th:object="${artista}">
         <h4 th:text="#{header.artista}">Artista:</h4>
         <a href="opera.html" 
