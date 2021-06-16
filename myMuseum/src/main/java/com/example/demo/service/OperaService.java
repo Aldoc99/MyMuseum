@@ -35,4 +35,9 @@ public class OperaService {
 	public void elimina(Long id){
 		this.operaRepository.deleteById(id);
 	}
+	
+	@Transactional
+	public List<Opera> getRandomOpere(){
+		return operaRepository.getRandomOpera();
+	}
 }
