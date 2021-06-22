@@ -36,7 +36,7 @@ public class MainController {
     }
 	
 	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public String getHomeIndex(Model model) {
+    public String getHomeAdmin(Model model) {
 		return "admin_home";
     }
     

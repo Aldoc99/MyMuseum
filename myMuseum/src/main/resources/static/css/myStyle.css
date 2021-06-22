@@ -123,9 +123,10 @@ img{
 
 a {
     text-decoration: none;
+    color: #302F2F;
 }
 a:visited {
-    color: black;
+    color: #302F2F;
 }
 a:hover {
     color: red;

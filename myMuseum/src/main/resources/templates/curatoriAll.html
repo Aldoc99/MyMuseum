@@ -20,7 +20,7 @@
         <li th:each="curatore : ${curatori}">
           <p th:text="|${curatore.nome} ${curatore.cognome}, ${curatore.matricola}|">Mario Rossi, 234567</p>
           <p th:text="|${curatore.luogoNascita}, ${curatore.dataNascita}">Mario Rossi, 234567</p>
-          <p th:text="|${curatore.email} ${curatore.numeroTelefono}">Mario Rossi, 234567</p>
+          <p th:text="|${curatore.email}, ${curatore.numeroTelefono}">Mario Rossi, 234567</p>
         </li>
       </ul>
     </div>

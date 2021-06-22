@@ -23,7 +23,7 @@ public class CuratoreController {
 	CuratoreValidator curatoreValidator;
 	
 	@RequestMapping(value= "/admin/curatori", method = RequestMethod.GET)
-    public String getCollezioniAll(Model model) {
+    public String getCuratoriAll(Model model) {
     	model.addAttribute("curatori", curatoreService.tutti());
         return "curatoriAll.html";
     }
@@ -37,7 +37,7 @@ public class CuratoreController {
     }
       
 	@RequestMapping(value="/admin/newCuratore", method = RequestMethod.POST)
-	public String getCollezione(@ModelAttribute("curatore")Curatore curatore, 
+	public String getCuratore(@ModelAttribute("curatore")Curatore curatore, 
 								Model model, BindingResult bindingResult) {
 		this.curatoreValidator.validate(curatore, bindingResult);
 		if (!bindingResult.hasErrors()) {
@@ -49,12 +49,12 @@ public class CuratoreController {
 	}
 	
 	@RequestMapping(value="/admin/deleteCuratore", method = RequestMethod.GET)
-    public String deleteArtista(Model model) {
+    public String deleteCuratore(Model model) {
     	model.addAttribute("curatori", curatoreService.tutti());
 		return "curatoriCancella";
     }
 	@RequestMapping(value="/admin/deleteCuratore", method = RequestMethod.POST)
-	public String deleteDoneArtista(Model model, 
+	public String deleteDoneCuratore(Model model, 
 			@RequestParam(required=false,name="curatoreDaCancellare")Long matricola) {
 		if (matricola==null) {
 			model.addAttribute("curatori", curatoreService.tutti());

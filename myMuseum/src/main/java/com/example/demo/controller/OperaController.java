@@ -70,7 +70,7 @@ public class OperaController {
     }
     
     @RequestMapping(value= "/admin/newOpera", method = RequestMethod.POST)
-	public String getCollezione(@ModelAttribute("opera")Opera opera,
+	public String getNewOpera(@ModelAttribute("opera")Opera opera,
 							@RequestParam(required=false,name="collezione")Long idC,
 							@RequestParam(required=false,name="artista")Long idA,
 							@RequestParam(required=false,name="foto")MultipartFile foto,
@@ -102,16 +102,16 @@ public class OperaController {
 		}
 		model.addAttribute("collezioni", collezioneService.tutti());
     	model.addAttribute("artisti", artistaService.tutti());
-    	return "formCollezione";
+    	return "formOpera";
 	}
     
 	@RequestMapping(value="/admin/deleteOpera", method = RequestMethod.GET)
-    public String deleteArtista(Model model) {
+    public String deleteOpera(Model model) {
     	model.addAttribute("opere", operaService.tutti());
 		return "opereCancella";
     }
 	@RequestMapping(value="/admin/deleteOpera", method = RequestMethod.POST)
-	public String deleteDoneArtista(Model model, 
+	public String deleteDoneOpera(Model model, 
 			@RequestParam(required=false,name="operaDaCancellare")Long id) {
 		if (id==null) {
 			model.addAttribute("opere", operaService.tutti());

@@ -19,13 +19,12 @@
       <ul>
         <li th:each="artista : ${artisti}">
           <a href="artista.html" 
-             th:href="@{'/artisti' + '/' + ${artista.id}}" 
+             th:href="@{'/admin/modificaArtista' + '/' + ${artista.id}}" 
              th:text="|${artista.nome} ${artista.cognome}|">Michelangelo Buonarroti</a>
-          <span th:text="${#lists.size(artista.opere)}">Numero opere</span>
+         
         </li>
       </ul>
     </div>   
-<!--"${#​lists.size(u.engines)}-->
     </section>
 
 

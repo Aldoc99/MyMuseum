@@ -68,12 +68,12 @@ public class CollezioneController {
 	}
     
 	@RequestMapping(value="/admin/deleteCollezione", method = RequestMethod.GET)
-    public String deleteArtista(Model model) {
+    public String deleteCollezione(Model model) {
     	model.addAttribute("collezioni", collezioneService.tutti());
 		return "collezioniCancella";
     }
 	@RequestMapping(value="/admin/deleteCollezione", method = RequestMethod.POST)
-	public String deleteDoneArtista(Model model, 
+	public String deleteDoneCollezione(Model model, 
 			@RequestParam(required=false,name="collezioneDaCancellare")Long id) {
 		if (id==null) {
 			model.addAttribute("collezioni", collezioneService.tutti());
